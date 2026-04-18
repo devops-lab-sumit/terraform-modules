@@ -24,7 +24,7 @@ resource "aws_subnet" "my_public_subnet" {
     vpc_id = aws_vpc.main_vpc.id   //Resource refrencing
     cidr_block = each.value
     //availability_zone = "ap-south-1a"
-    availability_zones = ["ap-south-1a", "ap-south-1b"]
+    availability_zone = ["ap-south-1a", "ap-south-1b"]
     map_public_ip_on_launch = true
     
     tags={
