@@ -21,3 +21,7 @@ variable "tags" {
   description = "Common tags"
   type        = map(string)
 }
+
+variable "availability_zones" {
+  type = list(string)
+}

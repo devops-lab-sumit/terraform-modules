@@ -15,20 +15,20 @@ resource "aws_vpc" "main_vpc" {
 
 //public subnet
 resource "aws_subnet" "my_public_subnet" {
-    for_each = toset(var.public_subnets)
+   // for_each = toset(var.public_subnets)
 //    for_each = {
   //for idx, cidr in var.public_subnets :
  // idx => cidr
 //}
-
+    for_each = local.public_subnet_map
     vpc_id = aws_vpc.main_vpc.id   //Resource refrencing
-    cidr_block = each.value
+    cidr_block = each.key
     //availability_zone = "ap-south-1a"
-    availability_zone = ["ap-south-1a", "ap-south-1b"]
+   availability_zone = each.value
     map_public_ip_on_launch = true
     
     tags={
-        Name = "public-subnet-${replace(each.value,"/","-")}"
+        Name = "public-subnet-${replace(each.key,"/","-")}"
     }
 
 }
