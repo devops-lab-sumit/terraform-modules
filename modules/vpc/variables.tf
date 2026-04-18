@@ -11,3 +11,13 @@ variable "public_subnets" {
 variable "private_subnets" {
    type =list(string)
 }
+
+variable "vpc_name" {
+  description = "Name of the VPC"
+  type        = string
+}
+
+variable "tags" {
+  description = "Common tags"
+  type        = map(string)
+}
